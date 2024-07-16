@@ -1,0 +1,8 @@
+.canvasContainer{
+    height: 100vh;
+}
+.max-container{
+    max-width: 1200px;
+    margin: auto;
+    padding: 10px;
+}
