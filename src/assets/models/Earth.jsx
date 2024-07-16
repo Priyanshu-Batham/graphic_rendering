@@ -8,11 +8,19 @@ Title: Earth
 
 import React, { useRef } from "react";
 import { OrbitControls, useGLTF } from "@react-three/drei";
+import { useFrame } from "@react-three/fiber";
 
 export default function Model(props) {
   const { nodes, materials } = useGLTF("/earth/earth.glb");
+  const group = useRef();
+  useFrame(() => {
+    if (group.current) {
+      group.current.rotation.y -= 0.001; // Adjust the speed by changing the increment value
+    }
+  });
+
   return (
-    <group {...props} dispose={null}>
+    <group {...props} dispose={null} ref={group}>
       <mesh
         castShadow
         receiveShadow
